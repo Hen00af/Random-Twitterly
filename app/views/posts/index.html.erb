@@ -1,0 +1,12 @@
+<h1><%= @theme.title %></h1>
+
+<%= form_with model: @post, url: posts_path do |f| %>
+  <%= f.hidden_field :theme_id, value: @theme.id %>
+  <%= f.text_area :content %>
+  <%= f.submit "投稿" %>
+<% end %>
+
+<h2>post list</h2>
+<% @posts.each do |post| %>
+  <p><%= post.content %></p>
+<% end %>

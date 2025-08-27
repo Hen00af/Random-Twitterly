@@ -1,0 +1,19 @@
+<h1><%= @theme.title %></h1>
+<%= button_to "別のお題に変える", root_path, method: :get %>
+
+<hr>
+
+<h2>このお題に投稿する</h2>
+<%= form_with model: @post, url: posts_path do |f| %>
+  <%= f.hidden_field :theme_id, value: @theme.id %>
+  <%= f.text_area :content, placeholder: "ここに文章を入力してください" %>
+  <br>
+  <%= f.submit "投稿" %>
+<% end %>
+
+<hr>
+
+<h2>みんなの投稿</h2>
+<% @posts.each do |post| %>
+  <p><%= post.content %></p>
+<% end %>
